@@ -181,5 +181,49 @@ def eta(first_stop, second_stop, route_map):
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
 
-    pass
+    route_map = {
+         ("upd","admu"):{
+         "travel_time_mins":10
+         },
+         ("admu","dlsu"):{
+             "travel_time_mins":35
+         },
+         ("dlsu","upd"):{
+             "travel_time_mins":55
+         }
+    }
+
+    route_map = {
+        ('a1', 'a2'): {
+            'travel_time_mins': 10
+        },
+        ('a2', 'b1'): {
+            'travel_time_mins': 10230
+        },
+        ('b1', 'a1'): {
+            'travel_time_mins': 1
+        }
+    }
+    
+    destination_routes = route_map.keys()
+    j = [ x for x, y in enumerate (destination_routes)]
+    k = [ y for x, y in enumerate (destination_routes)]
+    l = [ y for y, z in k]
+    m = [ z for y, z in k]
+    recurring_mins = 0
+    for o in l:
+        p = l.index(o)
+        if o in l:
+            while(True):
+                if m[p] != second_stop:
+                    stop_mins = int(route_map[l[p], m[p]]['travel_time_mins'])
+                    recurring_mins += stop_mins
+                    if p == len(l) - 1:
+                        p = 0
+                    elif p < len(l):
+                        p += 1
+                    continue
+                elif m[p] == second_stop:
+                    first_stop_mins = int(route_map[l[p],m[p]]['travel_time_mins'])
+                    return recurring_mins + first_stop_mins
     
