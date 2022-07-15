@@ -35,61 +35,14 @@ def relationship_status(from_member, to_member, social_graph):
     # Stay within the function. Only use the parameters as input. The function should return your answer.
 
 
-    social_graph = {
-        "@bongolpoc":{"first_name":"Joselito",
-                      "last_name":"Olpoc",
-                      "following":[
-                      ]
-        },
-        "@joaquin":  {"first_name":"Joaquin",
-                      "last_name":"Gonzales",
-                      "following":[
-                          "@chums","@jobenilagan"
-                      ]
-        },
-        "@chums" : {"first_name":"Matthew",
-                    "last_name":"Uy",
-                    "following":[
-                        "@bongolpoc","@miketan","@rudyang","@joeilagan"
-                    ]
-        },
-        "@jobenilagan":{"first_name":"Joben",
-                       "last_name":"Ilagan",
-                       "following":[
-                        "@eeebeee","@joeilagan","@chums","@joaquin"
-                       ]
-        },
-        "@joeilagan":{"first_name":"Joe",
-                      "last_name":"Ilagan",
-                      "following":[
-                        "@eeebeee","@jobenilagan","@chums"
-                      ]
-        },
-        "@eeebeee":  {"first_name":"Elizabeth",
-                      "last_name":"Ilagan",
-                      "following":[
-                        "@jobenilagan","@joeilagan"
-                      ]
-        },
-    }
-    from_member_following = social_graph[from_member]["following"]
-    to_member_following = social_graph[to_member]["following"]
-
-    for i in from_member_following:
-            if i == to_member:
-                for j, k in enumerate(to_member_following):
-                        if k == from_member:
-                            return "friends"
-                        else:
-                            continue
-                return "follower"
-            else:
-                continue
-    for k in to_member_following:
-            if k == from_member:
-                return "followed by"
-            else:
-                return "no relationship"
+     if to_member in social_graph[from_member]["following"] and from_member in social_graph[to_member]["following"]:
+        return "friends"
+    elif to_member in social_graph[from_member]["following"]:
+        return "follower"
+    elif from_member in social_graph[to_member]["following"]:
+        return "followed by"
+    else: 
+        return "no relationship"
 
 def tic_tac_toe(board):
     '''Tic Tac Toe.
@@ -180,30 +133,6 @@ def eta(first_stop, second_stop, route_map):
     '''
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-
-    route_map = {
-         ("upd","admu"):{
-         "travel_time_mins":10
-         },
-         ("admu","dlsu"):{
-             "travel_time_mins":35
-         },
-         ("dlsu","upd"):{
-             "travel_time_mins":55
-         }
-    }
-
-    route_map = {
-        ('a1', 'a2'): {
-            'travel_time_mins': 10
-        },
-        ('a2', 'b1'): {
-            'travel_time_mins': 10230
-        },
-        ('b1', 'a1'): {
-            'travel_time_mins': 1
-        }
-    }
     
     destination_routes = route_map.keys()
     j = [ x for x, y in enumerate (destination_routes)]
