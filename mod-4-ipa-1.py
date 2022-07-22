@@ -45,9 +45,9 @@ def relationship_status(from_member, to_member, social_graph):
         return "no relationship"
 
 def tic_tac_toe(board):
-    '''Tic Tac Toe.
+    '''Tic Tac Toe. 
     25 points.
-    Tic Tac Toe is a common paper-and-pencil game.
+    Tic Tac Toe is a common paper-and-pencil game. 
     Players must attempt to successfully draw a straight line of their symbol across a grid.
     The player that does this first is considered the winner.
     This function evaluates a tic tac toe board and returns the winner.
@@ -63,15 +63,15 @@ def tic_tac_toe(board):
     str
         the symbol of the winner or "NO WINNER" if there is no winner
     '''
-    # Replace `pass` with your code.
+    # Replace `pass` with your code. 
     # Stay within the function. Only use the parameters as input. The function should return your answer.
 
     horizontal_check = [x for x in board]
     vertical_check = [x for x in zip(*board)]
     updown_diagonal_check = [board[i][i] for i,v in enumerate(board)]
     downup_diagonal_check = [board[len(board)-1-i][i] for i,v in enumerate(board)]
-
-
+    
+    
     for j,m in enumerate(horizontal_check):
         if j < len(horizontal_check):
             if all([s=="X" for s in m]):
@@ -82,7 +82,7 @@ def tic_tac_toe(board):
                 continue
         else:
             break
-
+                      
     for l,n in enumerate(vertical_check):
         if l < len(vertical_check):
             if all([s=="X" for s in n]):
@@ -93,7 +93,7 @@ def tic_tac_toe(board):
                 continue
         else:
             break
-
+                      
     if all([s=="X" for s in updown_diagonal_check]):
           return "X"
     elif all([s=="O" for s in updown_diagonal_check]):
@@ -103,7 +103,7 @@ def tic_tac_toe(board):
     elif all([s=="O" for s in downup_diagonal_check]):
           return "O"
     else:
-          return None
+          return "NO WINNER"
 
 
 
